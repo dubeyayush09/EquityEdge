@@ -9,6 +9,11 @@ router.post('/register',async(req,res)=>{
     const {name,email,password}=req.body;
 
     try{
+        if(!name || !email || !password)
+        {
+            res.status(400).json({msg:'Every Field required'});
+            console.log("Every field Required")
+        }
         const existingUser=await User.findOne({email});
 
         //checking whether user already exist or not
@@ -20,11 +25,14 @@ router.post('/register',async(req,res)=>{
 
         //Save user to db
         const user=new User({name,email,password:hashedPassword});
+        console.log(user);
+
         await user.save();
 
 
         //generating token
         const token=jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:'1d'});
+        console.log(token);
 
         res.status(201).json({token,user:{id:user._id,name,email}})
     }
@@ -56,6 +64,7 @@ router.post('/Login',async(req,res)=>{
         const token=jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:'1d'});
 
         res.status(200).json({token,user:{id:user._id,name:user.name,email}})
+        console.log("logged in")
 
     }
     catch(err)
