@@ -18,10 +18,11 @@ const Login = () => {
         data
       );
       const {token,user}=res.data;
+    //   console.log("token received from login",token)
       localStorage.setItem("token",token);
       localStorage.setItem("user",JSON.stringify(user));
       setUser(user);
-      toast.success("Login Successgul!");
+      toast.success("Login Successful!");
       navigate('/dashboard')
 
 

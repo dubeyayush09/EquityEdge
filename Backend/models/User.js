@@ -21,7 +21,10 @@ const userSchema=new mongoose.Schema({
        type:[
         {
             symbol:{type:String},
-            name:{type:String}
+            name:{type:String},
+            close:{type:String},
+            change:{type:String},
+            percent_change:{type:String}
         }
        ],
         default:[]
