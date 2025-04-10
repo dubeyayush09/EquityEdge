@@ -54,9 +54,17 @@ const toNumber = (val) => {
   return 0;
 };
 
-
-  
-
+const handleDelete = async (symbol) => {
+  try {
+    const token = localStorage.getItem("token");
+    await axios.delete(`http://localhost:5000/api/watchlist/${symbol}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    fetchWatchlist(); // re-fetch the updated list
+  } catch (err) {
+    console.error("Error deleting from watchlist", err);
+  }
+};
 
   return (
     <div className="p-6">
@@ -80,6 +88,12 @@ const toNumber = (val) => {
               Change: ${toNumber(stock.change).toFixed(2)} (
               {toNumber(stock.percent_change).toFixed(2)}%)
             </p>
+            <button
+              onClick={() => handleDelete(stock.symbol)}
+              className="text-red-500 hover:text-red-700"
+            >
+              Remove
+            </button>
           </div>
         ))}
       </div>
