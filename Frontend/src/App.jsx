@@ -4,6 +4,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar';
 import Watchlist from './pages/Watchlist';
+import StockDetail from "./pages/StockDetail";
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/watchlist" element={<Watchlist />} />
+        <Route path="/stocks/:symbol" element={<StockDetail />} />
       </Routes>
     </Router>
   );

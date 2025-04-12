@@ -3,6 +3,8 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 
 const API_KEY = import.meta.env.VITE_TWELVE_API_KEY; 
@@ -139,8 +141,15 @@ const Watchlist = () => {
         {watchlist.map((stock, idx) => (
           <div key={idx} className="border rounded p-4 shadow bg-white">
             <h3 className="font-bold text-lg">
-              {stock.name} ({stock.symbol})
+              {stock.name} (
+              <Link to={`/stocks/${stock.symbol}`}>
+                <span className="text-blue-600 hover:underline cursor-pointer">
+                  {stock.symbol}
+                </span>
+              </Link>
+              )
             </h3>
+
             <p>Price: ${toNumber(stock.price || stock.close).toFixed(2)}</p>
             <p
               className={`${
@@ -159,6 +168,7 @@ const Watchlist = () => {
           </div>
         ))}
       </div>
+   
     </div>
   );
 };
