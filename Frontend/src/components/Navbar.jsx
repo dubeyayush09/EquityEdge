@@ -23,6 +23,9 @@ const Navbar = () => {
         {user ? (
           <>
             <span className="font-medium">Hi, {user.name}</span>
+            <Link to="/portfolio" className="hover:underline">
+              Portfolio
+            </Link>
             <Link to="/dashboard" className="hover:underline">
               Dashboard
             </Link>

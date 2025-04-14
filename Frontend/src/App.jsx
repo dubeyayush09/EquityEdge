@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar';
 import Watchlist from './pages/Watchlist';
 import StockDetail from "./pages/StockDetail";
+import Portfolio from './pages/portfolio';
 
 function App() {
   
@@ -19,6 +20,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/watchlist" element={<Watchlist />} />
         <Route path="/stocks/:symbol" element={<StockDetail />} />
+        <Route path="/portfolio" element={<Portfolio/>}/>
       </Routes>
     </Router>
   );
