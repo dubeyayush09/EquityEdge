@@ -7,6 +7,7 @@ require('dotenv').config();
 const authRoutes=require('./routes/auth')
 const watchlistRoutes=require('./routes/watchlist')
 const quote =require('./routes/quote')
+const stocksRoutes=require('./routes/stocks')
 
 const app=express();
 app.use(express.json());
@@ -100,6 +101,7 @@ app.get('/',(req,res)=>{
 })
 app.use('/api/auth',authRoutes);
 app.use('/api/watchlist',watchlistRoutes)
+app.use('/api/stocks',stocksRoutes)
 app.use('/api',quote)
 
 const PORT=process.env.PORT || 5000;
