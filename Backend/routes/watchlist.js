@@ -24,7 +24,7 @@ router.get('/get',auth,async(req,res)=>{
 
 //ADD stock to watchlist
 router.post('/add',auth,async(req,res)=>{
-    // console.log("decoded user from server:",req.user);
+    console.log("decoded user from server:",req.user);
     const {symbol,name,close,change,percent_change}=req.body;
     console.log(symbol);
     console.log(name);

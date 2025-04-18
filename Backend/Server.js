@@ -8,6 +8,8 @@ const authRoutes=require('./routes/auth')
 const watchlistRoutes=require('./routes/watchlist')
 const quote =require('./routes/quote')
 const stocksRoutes=require('./routes/stocks')
+const stocksTop=require('./routes/stocksTop')
+const marketdata=require('./routes/marketdata')
 
 const app=express();
 app.use(express.json());
@@ -102,6 +104,8 @@ app.get('/',(req,res)=>{
 app.use('/api/auth',authRoutes);
 app.use('/api/watchlist',watchlistRoutes)
 app.use('/api/stocks',stocksRoutes)
+app.use("/api/stocksAttop", stocksTop);
+app.use("/api/market",marketdata)
 app.use('/api',quote)
 
 const PORT=process.env.PORT || 5000;
